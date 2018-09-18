@@ -111,7 +111,7 @@ func newOCFHeader(config OCFConfig) (*ocfHeader, error) {
 	return header, nil
 }
 
-func readOCFHeader(ior io.Reader) (*ocfHeader, error) {
+func readOCFHeader(ior io.Reader, codec *Codec) (*ocfHeader, error) {
 	//
 	// magic bytes
 	//
@@ -165,9 +165,12 @@ func readOCFHeader(ior io.Reader) (*ocfHeader, error) {
 	if !ok {
 		return nil, errors.New("cannot read OCF header without avro.schema")
 	}
-	codec, err := NewCodec(string(value))
-	if err != nil {
-		return nil, fmt.Errorf("cannot read OCF header with invalid avro.schema: %s", err)
+
+	if codec == nil {
+		codec, err = NewCodec(string(value))
+		if err != nil {
+			return nil, fmt.Errorf("cannot read OCF header with invalid avro.schema: %s", err)
+		}
 	}
 
 	header := &ocfHeader{codec: codec, compressionID: cID, metadata: metadata}
