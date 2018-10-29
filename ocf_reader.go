@@ -52,8 +52,8 @@ type OCFReader struct {
 //         }
 //         return ocfr.Err()
 //     }
-func NewOCFReader(ior io.Reader) (*OCFReader, error) {
-	header, err := readOCFHeader(ior)
+func NewOCFReader(ior io.Reader, codec *Codec) (*OCFReader, error) {
+	header, err := readOCFHeader(ior, codec)
 	if err != nil {
 		return nil, fmt.Errorf("cannot create OCFReader: %s", err)
 	}

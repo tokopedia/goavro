@@ -85,7 +85,7 @@ func NewOCFWriter(config OCFConfig) (*OCFWriter, error) {
 		// have a size of 0 bytes.
 		if stat.Size() > 0 {
 			// attempt to read existing OCF header
-			if ocf.header, err = readOCFHeader(file); err != nil {
+			if ocf.header, err = readOCFHeader(file, nil); err != nil {
 				return nil, fmt.Errorf("cannot create OCFWriter: %s", err)
 			}
 			// prepare for appending data to existing OCF
