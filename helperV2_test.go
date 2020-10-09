@@ -23,7 +23,7 @@ func newCodecUsingV2(tb testing.TB, schema string) *Codec {
 }
 
 func nativeFromAvroUsingV2(tb testing.TB, avroBlob []byte) ([]interface{}, *Codec) {
-	ocf, err := NewOCFReader(bytes.NewReader(avroBlob))
+	ocf, err := NewOCFReader(bytes.NewReader(avroBlob), nil)
 	if err != nil {
 		tb.Fatal(err)
 	}

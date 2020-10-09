@@ -41,7 +41,7 @@ func TestCrashers_OCFReader(t *testing.T) {
 
 	for testName, f := range crashers {
 		t.Logf("Testing: %s", testName)
-		_, _ = NewOCFReader(strings.NewReader(f)) // looking for panic rather than an error
+		_, _ = NewOCFReader(strings.NewReader(f), nil) // looking for panic rather than an error
 	}
 }
 
@@ -385,7 +385,7 @@ func TestCrashers_OCF_e2e(t *testing.T) {
 		t.Logf("Testing: %s", testName)
 
 		// TODO: replace this with a call out to the e2e Fuzz function
-		ocfr, err := NewOCFReader(strings.NewReader(f))
+		ocfr, err := NewOCFReader(strings.NewReader(f), nil)
 		if err != nil {
 			continue
 		}
