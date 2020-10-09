@@ -43,7 +43,7 @@ func testOCFRoundTripWithHeaders(t *testing.T, compressionName string, headers m
 		t.Fatal(err)
 	}
 
-	ocfr, err := NewOCFReader(bb)
+	ocfr, err := NewOCFReader(bb, nil)
 	if err != nil {
 		t.Fatal(err)
 	}

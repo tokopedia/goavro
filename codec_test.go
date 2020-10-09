@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/linkedin/goavro"
+	"github.com/tokopedia/goavro/v3"
 )
 
 func ExampleCodecCanonicalSchema() {

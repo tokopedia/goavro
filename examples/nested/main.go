@@ -6,7 +6,7 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/linkedin/goavro"
+	"github.com/tokopedia/goavro/v3"
 )
 
 var (

@@ -17,10 +17,10 @@ import (
 // readOCFHeader, magic bytes
 
 func TestReadOCFHeaderMagicBytes(t *testing.T) {
-	_, err := NewOCFReader(bytes.NewBuffer([]byte("Obj"))) // missing fourth byte
+	_, err := NewOCFReader(bytes.NewBuffer([]byte("Obj")), nil) // missing fourth byte
 	ensureError(t, err, "cannot create OCF")
 
-	_, err = NewOCFReader(bytes.NewBuffer([]byte("....")))
+	_, err = NewOCFReader(bytes.NewBuffer([]byte("....")), nil)
 	ensureError(t, err, "cannot create OCF")
 }
 
@@ -29,7 +29,7 @@ func TestReadOCFHeaderMagicBytes(t *testing.T) {
 //
 
 func testCannotReadOCFHeader(t *testing.T, input []byte, expected ...string) {
-	_, err := NewOCFReader(bytes.NewBuffer(append([]byte("Obj\x01"), input...)))
+	_, err := NewOCFReader(bytes.NewBuffer(append([]byte("Obj\x01"), input...)), nil)
 	ensureError(t, err, append([]string{"cannot read OCF header"}, expected...)...)
 }
 

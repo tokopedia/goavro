@@ -16,7 +16,7 @@ Usage Example:
     import (
         "fmt"
 
-        "github.com/linkedin/goavro"
+        "github.com/tokopedia/goavro/v3"
     )
 
     func main() {

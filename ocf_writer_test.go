@@ -199,7 +199,7 @@ func TestOCFWriterAppendSomeItemsToNothing(t *testing.T) {
 		}
 	}(reader)
 
-	ocfr, err := NewOCFReader(reader)
+	ocfr, err := NewOCFReader(reader, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -260,7 +260,7 @@ func TestOCFWriterAppendSomeItemsToSomeItems(t *testing.T) {
 		}
 	}(reader)
 
-	ocfr, err := NewOCFReader(reader)
+	ocfr, err := NewOCFReader(reader, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
